@@ -8,6 +8,7 @@ var FileStore = require('session-file-store')(session);
 var passport = require('passport');
 var authenticate = require('./authenticate');
 var config = require('./config');
+const uploadRouter = require('./routes/uploadRouter');
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
@@ -53,7 +54,7 @@ app.use(session({
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/imageUpload',uploadRouter);
 app.use("/dishes", dishRouter);
 app.use("/promotions", promoRouter);
 app.use("/leaders", leaderRouter);
